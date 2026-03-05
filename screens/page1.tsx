@@ -20,7 +20,7 @@ export default function Page1Screen({ navigation }) {
 
   return (
     <View style={styles.styleView}>
-      <Text>Connexion</Text>
+      <Text>Page 1</Text>
 
       <Image
         source={{ uri: "https://yn.free.nf/wp/wp-content/uploads/2024/12/logo-btssio.png" }}
@@ -44,14 +44,6 @@ export default function Page1Screen({ navigation }) {
         value={password}
         onChangeText={setPassword}
       />
-
-      <View style={{ marginBottom: 20, width: "80%" }}>
-        <Button
-          color="gray"
-          title="VERS PAGE 2"
-          onPress={handleLogin}
-        />
-      </View>
 
       <View style={{ width: "80%" }}>
         <Button
