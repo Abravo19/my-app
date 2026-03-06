@@ -1,8 +1,9 @@
-import React from 'react';
+import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
-import page2Component from "./screens/page2";
-import page1Component from "./screens/page1";
+import page2Component from "./app/screens/page2";
+import page1Component from "./app/screens/page1";
+import page3Component from "./app/screens/page3";
 
 // charge les bibliothèques permettant la navigation
 const Stack = createNativeStackNavigator();
@@ -13,6 +14,7 @@ function MainStack() {
         <Stack.Navigator id="main-stack" screenOptions={{ headerShown: false }}>
             <Stack.Screen name="page1" component={page1Component} />
             <Stack.Screen name="page2" component={page2Component} />
+            <Stack.Screen name="page3" component={page3Component} />
         </Stack.Navigator>
     );
 }

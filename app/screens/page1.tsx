@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, TextInput, Button, Alert } from 'react-native';
-import { auth } from "../firebaseConfig";
+import { auth } from "../../firebaseConfig";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
 export default function Page1Screen({ navigation }) {

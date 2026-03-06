@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, Button, StyleSheet, FlatList } from "react-native";
+import { TouchableOpacity, View, Text, Button, StyleSheet, FlatList } from "react-native";
 import { collection, getDocs } from "firebase/firestore";
-import { db, auth } from "../firebaseConfig";
+import { db, auth } from "../../firebaseConfig";
 import { onAuthStateChanged } from "firebase/auth";
 
 export default function Page2Screen({ route, navigation }) {
@@ -35,10 +35,16 @@ export default function Page2Screen({ route, navigation }) {
         data={desserts}
         keyExtractor={(item, index) => index.toString()}
         renderItem={({ item }) => (
-          <Text style={styles.item}>
-            {item.idDessert} - {item.libelleDessert}
-          </Text>
+          <TouchableOpacity
+            style={styles.card}
+            onPress={() => navigation.navigate("page3", { dessert: item })}
+          >
+            <Text style={styles.cardTitle}>{item.idDessert} - {item.libelleDessert}</Text>
+            <Text style={styles.cardSubtitle}>ID : {item.idDessert}</Text>
+          </TouchableOpacity>
         )}
+        ItemSeparatorComponent={() => <View style={{ height: 10 }} />}
+        contentContainerStyle={{ paddingBottom: 20, }}
       />
 
       <Button
@@ -61,4 +67,27 @@ const styles = StyleSheet.create({
   },
   title: { fontSize: 24, fontWeight: "bold", marginBottom: 20 },
   item: { fontSize: 18, marginBottom: 10 },
+
+  card: {
+    width: "100%",
+    backgroundColor: "white",
+    padding: 16,
+    borderRadius: 10,
+    marginBottom: 12,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.15,
+    shadowRadius: 4,
+    elevation: 3,
+  },
+  cardTitle: {
+    fontSize: 18,
+    fontWeight: "bold",
+    marginBottom: 4,
+  },
+  cardSubtitle: {
+    fontSize: 14,
+    color: "#666",
+    marginTop: 4,
+  },
 });
